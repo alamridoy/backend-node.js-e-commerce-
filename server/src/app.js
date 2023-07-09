@@ -4,7 +4,7 @@ const app = express()
 const bodyParser = require('body-parser')
 const createError = require('http-errors')
 const rateLimit = require('express-rate-limit')
-
+const userRouter = require('./routers/userRouter')
 const limiter = rateLimit({
 	windowMs: 1 * 60 * 1000, // 1 minutes
 	max: 5, // Limit each IP to 100 requests per `window` (here, per 1 minutes)
@@ -16,6 +16,7 @@ const limiter = rateLimit({
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
+app.use('/api/users',userRouter)
 
 
 const isLoggedIn=(req,res,next)=>{
@@ -30,12 +31,6 @@ const isLoggedIn=(req,res,next)=>{
    }
 }
 app.use(isLoggedIn)
-app.get('/api/user',limiter,(req,res)=>{
-    console.log(req.body.id);
-    res.status(200).send({
-        message:'user profile is returned'
-    })
-})
 
 app.get('/',(req,res)=>{
     res.send("Welcome to server")
