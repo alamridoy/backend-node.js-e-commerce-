@@ -10,3 +10,4 @@
 ## Middleware & types of middleware
 ## express error handling middleware => body-parser package
 ## how to handle http errors => package install http-errors
+## using express rate limit => express-rate-limit
