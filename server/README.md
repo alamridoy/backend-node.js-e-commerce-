@@ -6,3 +6,4 @@
 ## Create express server
 ## HTTp express & response
 ## nodemon and mogran package install
+## just api testing to connect to postman
