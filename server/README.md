@@ -14,3 +14,4 @@
 ## Enviroment variable and .gitignore
 ## MVC architecture
 ## connect t0 MongoDB database
+##Schema & model for user
