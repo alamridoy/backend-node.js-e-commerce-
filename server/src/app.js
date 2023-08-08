@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const createError = require('http-errors')
 const rateLimit = require('express-rate-limit')
 const userRouter = require('./routers/userRouter')
+const seedRouter = require('./routers/seedRouter')
 
 const limiter = rateLimit({
 	windowMs: 1 * 60 * 1000, // 1 minutes
@@ -19,8 +20,9 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 
 app.use('/api/users',userRouter)
+app.use('/api/seed',seedRouter)
 
-
+ 
 //client error handling
 app.use((req,res,next)=>{
  next(createError(404,'Route not found'));

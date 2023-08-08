@@ -1,10 +1,12 @@
 const mongoose = require("mongoose")
 const {mongodbURL} = require("../secret")
+
 const connectDatabase = async(options={})=>{
     try {
        await mongoose.connect(mongodbURL,options)
        console.log("Connect Succesfully Database")
-       mongoose.connect.on('error',(error)=>{
+
+       mongoose.connection.on('error',(error)=>{
         console.error('DB connection error: ', error)
        })
     } catch (error) {
@@ -12,4 +14,4 @@ const connectDatabase = async(options={})=>{
     }
 };
 
-module.exports = connectDatabase;
+module.exports = connectDatabase();
